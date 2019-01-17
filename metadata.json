@@ -1,0 +1,41 @@
+{
+  "name": "thehyve-gb_backend",
+  "version": "0.1.0",
+  "author": "The Hyve DWH Team",
+  "summary": "Puppet module to install gb backend",
+  "license": "GPL-3.0",
+  "source": "https://github.com/thehyve/puppet-gb_backend",
+  "project_page": "https://github.com/thehyve/puppet-gb_backend",
+  "issues_url": "https://github.com/thehyve/puppet-gb_backend/issues",
+  "dependencies": [
+    {
+      "name": "puppetlabs-stdlib",
+      "version_requirement": ">= 1.0.0"
+    }
+  ],
+  "data_provider": null,
+  "operatingsystem_support": [
+    {
+      "operatingsystem": "Debian",
+      "operatingsystemrelease": [
+        "8",
+        "9"
+      ]
+    },
+    {
+      "operatingsystem": "Ubuntu",
+      "operatingsystemrelease": [
+        "14.04",
+        "16.04",
+        "18.04"
+      ]
+    },
+    {
+      "operatingsystem": "CentOS",
+      "operatingsystemrelease": [
+        "7"
+      ]
+    }
+  ]
+}
+

@@ -1,0 +1,3 @@
+---
+gb_backend::keycloak_realm: test
+gb_backend::keycloak_client_id: gb_backend

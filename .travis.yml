@@ -1,0 +1,23 @@
+language: ruby
+sudo: required
+dist: trusty
+addons:
+  apt:
+    packages:
+      - puppet
+
+env:
+  - PUPPET_VERSION=5.5.0
+
+install:
+  - sudo apt-get install -y ruby-dev
+  - gem install bundler
+  - bundle
+
+before_script: 
+  - puppet --version
+  - ruby --version
+  - rake --version
+
+script:
+  - rake test

@@ -1,0 +1,12 @@
+keycloak:
+        auth-server-url: <%= scope.lookupvar('::gb_backend::params::keycloak_server_url') %>
+        realm: <%= scope.lookupvar('::gb_backend::params::keycloak_realm') %>
+        resource: <%= scope.lookupvar('::gb_backend::params::keycloak_client_id') %>
+
+dataSource:
+        driverClassName: org.postgresql.Driver
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        username: <%= scope.lookupvar('::gb_backend::params::db_user') %>
+        password: <%= scope.lookupvar('::gb_backend::params::db_password') %>
+url: jdbc:postgresql://<%= scope.lookupvar('::gb_backend::params::db_host') %>:<%= scope.lookupvar('::gb_backend::params::db_port') %>/<%= scope.lookupvar('::gb_backend::params::db_name') %>
+

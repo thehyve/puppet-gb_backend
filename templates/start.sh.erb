@@ -1,0 +1,13 @@
+#!/usr/bin/env bash
+
+cd "$( dirname "${BASH_SOURCE[0]}" )"
+
+java \
+    -jar \
+    -server \
+    -Djava.awt.headless=true \
+    -Dmail.mime.decodeparameters=true \
+    -Djava.security.egd=file:///dev/urandom \
+    -Dserver.port=<%= @app_port %> \
+    -Dspring.config.location=<%= @app_conf %> \
+    <%= @application_war_file %>
