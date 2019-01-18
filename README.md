@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.org/thehyve/puppet-gb_backend.svg?branch=master)](https://travis-ci.org/thehyve/puppet-gb_backend)
+
 Puppet module to deploy glowing bear backend.
 
 # Install Puppet
