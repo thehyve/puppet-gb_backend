@@ -1,30 +1,31 @@
 Puppet module to deploy glowing bear backend.
 
-# Prerequisites
-
-    - java 8 or later
-    - PostgreSQL
-
 # Install Puppet
 
-	# For Debian 9 and Ubuntu 18.04
-	sudo apt install puppet
+    apt-get update --fix-missing
 
-	# For Ubuntu 16.04
-	wget https://apt.puppetlabs.com/puppet5-release-xenial.deb
-	sudo dpkg -i puppet5-release-xenial.deb
-	sudo apt update
-	sudo apt install puppet5-release
+    # For Debian 9 and Ubuntu 18.04
+    sudo apt install puppet
 
-	# Install puppet modules
-	puppet module install puppet-archive
+    # For Ubuntu 16.04
+    wget https://apt.puppetlabs.com/puppet5-release-xenial.deb
+    sudo dpkg -i puppet5-release-xenial.deb
+    sudo apt update
+    sudo apt install puppet5-release
 
-	# Check Puppet version, Puppet 4.8 and Puppet 5 should be fine.
-	puppet --version
+    # Install puppet modules
+    sudo puppet module install puppet-archive -v 3.2.1
+    sudo puppet module install puppetlabs-java -v 3.3.0
+    sudo puppet module install puppetlabs-postgresql -v 5.11.0
+
+    # Check Puppet version, Puppet 4.8 and Puppet 5 should be fine.
+    puppet --version
+
+*Note:* module manages postgres database. It will create a database and user with password (see parameters [here](#application-db-parameters)) if it does note exist.
 
 # Install module
 
-	git submodule add https://github.com/thehyve/puppet-gb_backend.git gb_backend
+    git submodule add https://github.com/thehyve/puppet-gb_backend.git gb_backend
 
 # Parameters
 
@@ -38,9 +39,10 @@ Keycloak parameters. They should match with that ones that frontend glowing bear
 | `gb_backend::keycload_realm` || keycloak realm. |
 | `gb_backend::keycload_client_id` || keycloak client id. |
 
-## Application db connection parameters
+## Application db parameters
 
-Database parameters used by the application to establish connnection.
+Database parameters used to create database if it does not exist and used by the application to establish connnection.
+*Note:* Creationg of the databse supported only for `localhost` db host.
 *PostgeSQL* is used by default at the moment.
 
 | Hiera key | Default value | Description |

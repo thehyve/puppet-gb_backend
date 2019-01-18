@@ -25,6 +25,34 @@ class gb_backend(
         managehome =>  true,
     }
 
+    case $::osfamily {
+        'redhat': {
+            class { '::java':
+                package => 'java-1.8.0-openjdk'
+            }
+        }
+        default: {
+            class { '::java':
+                package => 'openjdk-8-jdk' # Debian based distros
+            }
+        }
+    }
+
+    if $db_host == 'localhost' {
+        class { '::postgresql::server':
+            port => $db_port
+        }
+        -> postgresql::server::role { $db_user:
+            password_hash => $db_password,
+            superuser     => true,
+        }
+        -> postgresql::server::database { $db_name:
+            owner => $db_user,
+        }
+    } else {
+        warning('Skipping db management step. It exists for localhost only.')
+    }
+
     $application_war_file = "${user_home}/gb-backend-${version}.war"
 
     archive::nexus { $application_war_file:
