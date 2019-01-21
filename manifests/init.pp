@@ -47,14 +47,14 @@ class gb_backend(
             superuser     => true,
         }
         -> postgresql::server::database { $db_name:
-            owner => $db_user,
+            notify =>  Service['gb-backend'],
+            owner  => $db_user,
         }
     } else {
         warning('Skipping db management step. It exists for localhost only.')
     }
 
     $application_war_file = "${user_home}/gb-backend-${version}.war"
-
     archive::nexus { $application_war_file:
         user       =>  $user,
         url        =>  $nexus_url,
@@ -69,31 +69,37 @@ class gb_backend(
     }
 
     $app_conf = "${user_home}/application.yml"
-    $start_script = "${user_home}/start.sh"
-
     file { $app_conf:
         ensure  =>  file,
         owner   =>  $user,
         content =>  template('gb_backend/application.yml.erb'),
+        require =>  User[$user],
         notify  =>  Service['gb-backend'],
     }
-    -> file { $start_script:
+
+    $start_script = "${user_home}/start.sh"
+    file { $start_script:
         ensure  =>  file,
         owner   =>  $user,
         mode    =>  '0744',
         content =>  template('gb_backend/start.sh.erb'),
+        require =>  [ User[$user], Class['::java'], Archive::Nexus[$application_war_file], File[$app_conf] ],
         notify  =>  Service['gb-backend'],
     }
-    -> file { '/etc/systemd/system/gb-backend.service':
+
+    $service_conf = '/etc/systemd/system/gb-backend.service'
+    file { $service_conf:
         ensure  =>  file,
         mode    =>  '0644',
         content =>  template('gb_backend/gb-backend.service.erb'),
+        require =>  File[$start_script],
         notify  =>  Service['gb-backend'],
     }
-    -> service { 'gb-backend':
+
+    service { 'gb-backend':
         ensure   =>  running,
         provider =>  'systemd',
-        require  =>  [ Archive::Nexus[$application_war_file] ],
+        require  =>  File[$service_conf],
     }
 
 }
