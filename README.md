@@ -4,7 +4,7 @@
 
 ## How to install
 
-    apt-get update --fix-missing
+    sudo apt-get update --fix-missing
 
     # For Debian 9 and Ubuntu 18.04
     sudo apt install puppet
@@ -55,8 +55,8 @@ Keycloak parameters. They should match with that ones that frontend glowing bear
 | Hiera key | Default value | Description |
 |-----------|---------------|-------------|
 | `gb_backend::keycloak_server_url` || keycloak url that used. e.g. `https://keycloak.example.com/auth` |
-| `gb_backend::keycload_realm` || keycloak realm. |
-| `gb_backend::keycload_client_id` || keycloak client id. |
+| `gb_backend::keycloak_realm` || keycloak realm. |
+| `gb_backend::keycloak_client_id` || keycloak client id. |
 
 ### Application db parameters
 
