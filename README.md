@@ -20,7 +20,7 @@
     sudo puppet module install puppetlabs-java -v 3.3.0
     sudo puppet module install puppetlabs-postgresql -v 5.11.0
 
-    # Check Puppet version, Puppet 4.8 and Puppet 5 should be fine.
+    # Check Puppet version, Puppet 4.8-6.1.0 should be fine.
     puppet --version
 
 *Note:* module manages postgres database. It will create a database and user with password (see parameters [here](#application-db-parameters)) if it does note exist.
@@ -118,34 +118,10 @@ sudo journalctl -u gb-backend.service
 
 ### Test
 
-The module has been tested on Ubuntu 16.04 with Puppet version 5.5.0.
-There are some automated tests, run using [rake](https://github.com/ruby/rake).
+The module has been tested on Ubuntu 18.04 with Puppet version 6.1.0.
+There are some automated tests, run on docker. See [tests readme](./tests/README.md) for more deatails.
 
-A version of `ruby` before `2.3` is required. [rvm](https://rvm.io/) can be used to install a specific version of `ruby`.
-Use `rvm install 2.1` to use `ruby` version `2.1`.
-
-The tests are automatically run on our Bamboo server: [PUPPET-PUPPETTS](https://ci.ctmmtrait.nl/browse/PUPPET-PUPPETTS).
-
-#### Rake tests
-
-Install rake using the system-wide `ruby`:
-```bash
-yum install ruby-devel
-gem install bundler
-export PUPPET_VERSION=4.8.2
-bundle
-```
-or using `rvm`:
-```bash
-rvm install 2.3
-gem install bundler
-export PUPPET_VERSION=4.8.2
-bundle
-```
-Run the test suite:
-```bash
-rake test
-```
+The tests are automatically run on [travis](.travis.yml) server.
 
 ## License
 
