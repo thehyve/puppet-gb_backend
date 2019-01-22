@@ -20,7 +20,7 @@
     sudo puppet module install puppetlabs-java -v 3.3.0
     sudo puppet module install puppetlabs-postgresql -v 5.11.0
 
-    # Check Puppet version, Puppet 4.8-6.1.0 should be fine.
+    # Check Puppet version, Puppet 4.8-5.5.0 should be fine.
     puppet --version
 
 *Note:* module manages postgres database. It will create a database and user with password (see parameters [here](#application-db-parameters)) if it does note exist.
@@ -32,7 +32,7 @@
 
 ### Dependencies
 
-The instructions are for installing 
+The instructions are for installing
 - the [Keycloak] identity provider,
 - the [TranSMART API server](https://github.com/thehyve/transmart-core/tree/dev/transmart-api-server), and
 - the [Glowing Bear] user interface for the backend.
@@ -95,7 +95,7 @@ Database parameters used to create database if it does not exist and used by the
 | `gb_backend::app_port` | `8083` | The port the application runs on. |
 
 
-## Manage `systemd` services 
+## Manage `systemd` services
 
 Start the `gb-backend` service:
 ```bash
@@ -118,10 +118,34 @@ sudo journalctl -u gb-backend.service
 
 ### Test
 
-The module has been tested on Ubuntu 18.04 with Puppet version 6.1.0.
-There are some automated tests, run on docker. See [tests readme](./tests/README.md) for more deatails.
+The module has been tested on Ubuntu 18.04 with Puppet version 5.5.0.
+There are some automated tests, run on docker.
 
 The tests are automatically run on [travis](.travis.yml) server.
+
+#### Requirements
+
+- Docker
+
+#### Build docker image with prerequisites
+
+```bash
+    ./build_prerequisites.sh
+```
+
+#### Run unit tests
+
+It includes linter check.
+
+```bash
+    ./run_unit_tests.sh
+```
+
+#### Run e2e tests
+
+```bash
+    ./run_e2e_tests.sh
+```
 
 ## License
 

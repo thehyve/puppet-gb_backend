@@ -1,0 +1,14 @@
+FROM ubuntu:18.04
+
+ENV PUPPET_VERSION=5.5.0
+
+RUN apt-get update && apt-get install -y \
+    ruby-dev \
+    make \
+    gcc
+
+RUN gem install bundler
+
+RUN mkdir -p dependencies
+COPY ./Gemfile dependencies 
+RUN cd dependencies && bundle install

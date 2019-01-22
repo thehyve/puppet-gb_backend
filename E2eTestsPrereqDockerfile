@@ -1,12 +1,9 @@
 FROM ubuntu:18.04
 
-RUN apt-get update && apt-get install -y \
-    puppet \
-    ruby-dev \
-    make \
-    gcc
+ENV PUPPET_VERSION=5.5.0
 
-RUN gem install bundler
+RUN apt-get update && apt-get install -y \
+    puppet
 
 RUN puppet module install puppet-archive -v 3.2.1
 RUN puppet module install puppetlabs-java -v 3.3.0

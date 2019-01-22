@@ -4,8 +4,9 @@ services:
   - docker
 
 install:
-  - ./tests/build_prerequisites.sh
+  - ./build_unit_tests_prerequisites.sh
+  - ./build_e2e_tests_prerequisites.sh
 
 script:
-  - ./tests/run_unit_tests.sh
-  - ./tests/run_e2e_tests.sh
+  - ./run_unit_tests.sh
+  - ./run_e2e_tests.sh
