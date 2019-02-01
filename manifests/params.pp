@@ -17,6 +17,12 @@ class gb_backend::params (
 
     String $version = lookup('gb_backend::version', String, first, '0.1-SNAPSHOT'),
     Integer[1, 65535] $app_port = lookup('gb_backend::app_port', Integer[1, 65535], first, 8083),
+
+    Boolean $notifications_enabled       = lookup('gb_backend::notifications_enabled', Boolean, first, false),
+    Integer $notifications_sets          = lookup('gb_backend::notifications_sets', Integer, first, 20),
+    Integer[0,23] $notifications_trigger_hour = lookup('gb_backend::notifications_trigger_hour', Integer[0,23], first, 0),
+    Integer[0,59] $notifications_trigger_minute = lookup('gb_backend::notifications_trigger_minute', Integer[0,59], first, 0),
+    Optional[String] $sender_email = lookup('gb_backend::sender_email', Optional[String], first, undef),
 ) {
     if $keycloak_server_url == '' {
         fail('No keyckloak server URL specified. Please configure gb_backend::keycloak_server_url')

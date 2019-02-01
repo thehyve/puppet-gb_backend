@@ -9,3 +9,22 @@ dataSource:
     username: <%= scope.lookupvar('::gb_backend::params::db_user') %>
     password: <%= scope.lookupvar('::gb_backend::params::db_password') %>
     url: jdbc:postgresql://<%= scope.lookupvar('::gb_backend::params::db_host') %>:<%= scope.lookupvar('::gb_backend::params::db_port') %>/<%= scope.lookupvar('::gb_backend::params::db_name') %>
+
+<% if scope.lookupvar('::gb_backend::params::notifications_enabled') -%>
+org.transmartproject.notifications:
+    # enable daily and weekly notification jobs
+    enabled: true
+    # max number of query sets returned in a subscription email
+    maxNumberOfSets: <%= scope.lookupvar('::gb_backend::params::notifications_sets').to_s %>
+    # daily cron job trigger time in format: hh-mm
+    # hh: Hour, range: 0-23;
+    # mm: Minute, range: 0-59;
+    dailyJobTriggerTime: <%= scope.lookupvar('::gb_backend::params::notifications_trigger_hour').to_s %>-<%= scope.lookupvar('::gb_backend::params::notifications_trigger_minute').to_s %>
+<% end -%>
+
+<% if scope.lookupvar('::gb_backend::params::sender_email') != nil -%>
+grails:
+    mail:
+        'default':
+            from:  <%= scope.lookupvar('::gb_backend::params::sender_email').to_s %>
+<% end -%>
