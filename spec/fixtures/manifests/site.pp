@@ -14,6 +14,10 @@ node 'nokeycloakclient.example.com' {
     include ::gb_backend
 }
 
+node 'noofflinetoken.example.com' {
+    include ::gb_backend
+}
+
 node 'notransmart.example.com' {
     include ::gb_backend
 }

@@ -3,3 +3,4 @@ gb_backend::transmart_server_url: http://transmart.example.com
 gb_backend::keycloak_server_url: http://keycloak.example.com/auth
 gb_backend::keycloak_realm: test
 gb_backend::keycloak_client_id: gb_backend
+gb_backend::keycloak_offline_token: token

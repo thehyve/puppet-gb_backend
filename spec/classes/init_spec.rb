@@ -17,6 +17,7 @@ describe 'gb_backend' do
             .with_content(/\s*auth-server-url:\s*http:\/\/keycloak\.example\.com\/auth\s*/)
             .with_content(/\s*realm:\s*test\s*/)
             .with_content(/\s*resource:\s*gb_backend\s*/)
+            .with_content(/\s*offlineToken:\s*token\s*/)
             .with_content(/\s*username:\s*gb\s*/)
             .with_content(/\s*password:\s*gb\s*/)
             .with_content(/\s*url:\s*jdbc:postgresql:\/\/localhost:5432\/gb_backend\s*/)
@@ -70,4 +71,10 @@ describe 'gb_backend' do
     }
   end
 
+  context 'with no offline token specified' do
+    let(:node) { 'noofflinetoken.example.com' }
+    it {
+        is_expected.to raise_error(/keycloak_offline_token/)
+    }
+  end
 end

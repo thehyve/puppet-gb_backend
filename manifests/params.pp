@@ -4,6 +4,7 @@ class gb_backend::params (
     String $keycloak_server_url = lookup('gb_backend::keycloak_server_url', String, first, ''),
     String $keycloak_realm = lookup('gb_backend::keycloak_realm', String, first, ''),
     String $keycloak_client_id = lookup('gb_backend::keycloak_client_id', String, first, ''),
+    String $keycloak_offline_token = lookup('gb_backend::keycloak_offline_token', String, first, ''),
 
     String $db_user = lookup('gb_backend::db_user', String, first, 'gb'),
     String $db_password = lookup('gb_backend::db_password', String, first, 'gb'),
@@ -42,4 +43,7 @@ class gb_backend::params (
         fail('No keycloak client id specified. Please configure gb_backend::keycloak_client_id')
     }
 
+    if $keycloak_offline_token == '' {
+        fail('No keycloak offline token specified. Please configure gb_backend::keycloak_offline_token')
+    }
 }

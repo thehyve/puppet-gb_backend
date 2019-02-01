@@ -57,6 +57,7 @@ Keycloak parameters. They should match with that ones that frontend glowing bear
 | `gb_backend::keycloak_server_url` || keycloak url that used. e.g. `https://keycloak.example.com/auth` |
 | `gb_backend::keycloak_realm` || keycloak realm. |
 | `gb_backend::keycloak_client_id` || keycloak client id. |
+| `gb_backend::keycloak_offline_token` || keycloak offline token. |
 
 ### Application parameters
 

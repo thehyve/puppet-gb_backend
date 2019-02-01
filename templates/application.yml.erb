@@ -5,6 +5,8 @@ keycloak:
     auth-server-url: <%= scope.lookupvar('::gb_backend::params::keycloak_server_url') %>
     realm: <%= scope.lookupvar('::gb_backend::params::keycloak_realm') %>
     resource: <%= scope.lookupvar('::gb_backend::params::keycloak_client_id') %>
+keycloakOffline:
+    offlineToken: <%= scope.lookupvar('::gb_backend::params::keycloak_offline_token') %>
 
 dataSource:
     driverClassName: org.postgresql.Driver

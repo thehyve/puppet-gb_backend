@@ -4,6 +4,7 @@ class gb_backend(
     String $keycloak_server_url = $::gb_backend::params::keycloak_server_url,
     String $keycloak_realm = $::gb_backend::params::keycloak_realm,
     String $keycloak_client_id = $::gb_backend::params::keycloak_client_id,
+    String $keycloak_offline_token = $::gb_backend::params::keycloak_offline_token,
 
     String $db_user = $::gb_backend::params::db_user,
     String $db_password = $::gb_backend::params::db_password,
