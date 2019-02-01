@@ -1,3 +1,4 @@
 ---
+gb_backend::transmart_server_url: http://transmart.example.com
 gb_backend::keycloak_realm: test
 gb_backend::keycloak_client_id: gb_backend

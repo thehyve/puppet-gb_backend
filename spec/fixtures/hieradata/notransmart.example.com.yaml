@@ -1,4 +1,3 @@
 ---
-gb_backend::transmart_server_url: http://transmart.example.com
 gb_backend::keycloak_server_url: http://keycloak.example.com
 gb_backend::keycloak_realm: test

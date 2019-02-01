@@ -1,4 +1,6 @@
 class gb_backend(
+    String $transmart_server_url = $::gb_backend::params::transmart_server_url,
+
     String $keycloak_server_url = $::gb_backend::params::keycloak_server_url,
     String $keycloak_realm = $::gb_backend::params::keycloak_realm,
     String $keycloak_client_id = $::gb_backend::params::keycloak_client_id,

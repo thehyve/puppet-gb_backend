@@ -13,6 +13,7 @@ describe 'gb_backend' do
             .with_content(/\s*\/home\/gb\/gb-backend\-0\.1\-SNAPSHOT\.war\s*/)
 
         is_expected.to contain_file('/home/gb/application.yml')
+            .with_content(/\s*server-url:\s*http:\/\/transmart\.example\.com\s*/)
             .with_content(/\s*auth-server-url:\s*http:\/\/keycloak\.example\.com\/auth\s*/)
             .with_content(/\s*realm:\s*test\s*/)
             .with_content(/\s*resource:\s*gb_backend\s*/)
@@ -61,4 +62,12 @@ describe 'gb_backend' do
         is_expected.to raise_error(/keycloak_client_id/)
     }
   end
+
+  context 'with no transmart specified' do
+    let(:node) { 'notransmart.example.com' }
+    it {
+        is_expected.to raise_error(/transmart_server_url/)
+    }
+  end
+
 end

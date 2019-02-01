@@ -52,11 +52,17 @@ git clone https://github.com/thehyve/puppet-glowing_bear.git glowing_bear
 
 Keycloak parameters. They should match with that ones that frontend glowing bear application uses.
 
-| Hiera key | Default value | Description |
+| hiera key | default value | description |
 |-----------|---------------|-------------|
 | `gb_backend::keycloak_server_url` || keycloak url that used. e.g. `https://keycloak.example.com/auth` |
 | `gb_backend::keycloak_realm` || keycloak realm. |
 | `gb_backend::keycloak_client_id` || keycloak client id. |
+
+### Application parameters
+
+| hiera key | default value | description |
+|-----------|---------------|-------------|
+| `gb_backend::transmart_server_url` || transmart url that used. e.g. `https://transmart.example.com` |
 
 ### Application db parameters
 
