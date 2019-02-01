@@ -9,6 +9,8 @@
     # For Debian 9 and Ubuntu 18.04
     sudo apt install puppet
 
+    sudo apt install postgresql
+
     # For Ubuntu 16.04
     wget https://apt.puppetlabs.com/puppet5-release-xenial.deb
     sudo dpkg -i puppet5-release-xenial.deb
@@ -23,7 +25,7 @@
     # Check Puppet version, Puppet 4.8 and Puppet 5 should be fine.
     puppet --version
 
-*Note:* module manages postgres database. It will create a database and user with password (see parameters [here](#application-db-parameters)) if it does note exist.
+*Note:* module will create a database and user with password (see parameters [here](#application-db-parameters)) if it does note exist.
 
 ### Install module
 

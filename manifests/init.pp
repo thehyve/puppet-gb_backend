@@ -48,10 +48,7 @@ class gb_backend(
     }
 
     if $db_host == 'localhost' {
-        class { '::postgresql::server':
-            port => $db_port
-        }
-        -> postgresql::server::role { $db_user:
+        postgresql::server::role { $db_user:
             password_hash => $db_password,
             superuser     => true,
         }
