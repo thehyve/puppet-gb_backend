@@ -1,7 +1,10 @@
 class gb_backend::params (
+    String $transmart_server_url = lookup('gb_backend::transmart_server_url', String, first, ''),
+
     String $keycloak_server_url = lookup('gb_backend::keycloak_server_url', String, first, ''),
     String $keycloak_realm = lookup('gb_backend::keycloak_realm', String, first, ''),
     String $keycloak_client_id = lookup('gb_backend::keycloak_client_id', String, first, ''),
+    String $keycloak_offline_token = lookup('gb_backend::keycloak_offline_token', String, first, ''),
 
     String $db_user = lookup('gb_backend::db_user', String, first, 'gb'),
     String $db_password = lookup('gb_backend::db_password', String, first, 'gb'),
@@ -24,6 +27,10 @@ class gb_backend::params (
     Integer[0,59] $notifications_trigger_minute = lookup('gb_backend::notifications_trigger_minute', Integer[0,59], first, 0),
     Optional[String] $sender_email = lookup('gb_backend::sender_email', Optional[String], first, undef),
 ) {
+    if $transmart_server_url == '' {
+        fail('No transmart server URL specified. Please configure gb_backend::transmart_server_url')
+    }
+
     if $keycloak_server_url == '' {
         fail('No keyckloak server URL specified. Please configure gb_backend::keycloak_server_url')
     }
@@ -36,4 +43,7 @@ class gb_backend::params (
         fail('No keycloak client id specified. Please configure gb_backend::keycloak_client_id')
     }
 
+    if $keycloak_offline_token == '' {
+        fail('No keycloak offline token specified. Please configure gb_backend::keycloak_offline_token')
+    }
 }
