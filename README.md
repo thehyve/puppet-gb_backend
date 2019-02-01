@@ -94,6 +94,15 @@ Database parameters used to create database if it does not exist and used by the
 | `gb_backend::vesion` | `0.1-SNAPSHOT` | The version of application to install. |
 | `gb_backend::app_port` | `8083` | The port the application runs on. |
 
+### Query subscription notification parameters
+
+| Hiera key | Default value | Description |
+|-----------|---------------|-------------|
+| `gb_backend::notifications_enabled` | `false` | Enable notification for query subscriptions. |
+| `gb_backend::notifications_sets` | `20` | Number of sets. |
+| `gb_backend::notifications_trigger_hour` | `0` | Hour for daily notification trigger. |
+| `gb_backend::notifications_trigger_minute` | `0` | Minute for daily notification trigger. |
+| `gb_backend::sender_email` || Email address used in "from" field in the emails sent by the glowing bear. |
 
 ## Manage `systemd` services 
 

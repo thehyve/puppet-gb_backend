@@ -4,7 +4,7 @@ describe 'gb_backend' do
     context 'with specified keycloak and default parameters on #{os}' do
       let(:facts) { facts }
       let(:node) { 'test.example.com' }
-      it { 
+      it {
         is_expected.to create_class('gb_backend')
 
         is_expected.to contain_file('/home/gb/start.sh')
@@ -19,13 +19,27 @@ describe 'gb_backend' do
             .with_content(/\s*username:\s*gb\s*/)
             .with_content(/\s*password:\s*gb\s*/)
             .with_content(/\s*url:\s*jdbc:postgresql:\/\/localhost:5432\/gb_backend\s*/)
- 
+
         is_expected.to contain_file('/etc/systemd/system/gb-backend.service')
             .with_content(/\s*ExecStart=\/home\/gb\/start\.sh\s*/)
             .with_content(/\s*User=gb\s*/)
       }
     end
+
+    context 'with specified notification parameters' do
+      let(:facts) { facts }
+      let(:node) { 'notifications.example.com' }
+      it {
+        is_expected.to create_class('gb_backend')
+        is_expected.to contain_file('/home/gb/application.yml')
+            .with_content(/\s*maxNumberOfSets:\s*35\s*/)
+            .with_content(/\s*dailyJobTriggerTime:\s*18\-25\s*/)
+            .with_content(/\s*from:\s*email@example.com\s*/)
+      }
+    end
+
   end
+
 
   context 'with no keycloak url specified' do
     let(:node) { 'nokeycloakurl.example.com' }
@@ -46,5 +60,5 @@ describe 'gb_backend' do
     it {
         is_expected.to raise_error(/keycloak_client_id/)
     }
-  end 
+  end
 end

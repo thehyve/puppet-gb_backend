@@ -1,0 +1,10 @@
+---
+gb_backend::keycloak_server_url: http://keycloak.example.com/auth
+gb_backend::keycloak_realm: test
+gb_backend::keycloak_client_id: gb_backend
+
+gb_backend::notifications_enabled: true
+gb_backend::notifications_sets: 35
+gb_backend::notifications_trigger_hour: 18
+gb_backend::notifications_trigger_minute: 25
+gb_backend::sender_email: email@example.com

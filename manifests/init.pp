@@ -17,6 +17,12 @@ class gb_backend(
 
     String $version = $::gb_backend::params::version,
     Integer[1, 65535] $app_port = $::gb_backend::params::app_port,
+
+    Boolean $notifications_enabled = $::gb_backend::params::notifications_enabled,
+    Integer $notifications_sets = $::gb_backend::params::notifications_sets,
+    Integer[0,23] $notifications_trigger_hour = $::gb_backend::params::notifications_trigger_hour,
+    Integer[0,59] $notifications_trigger_minute = $::gb_backend::params::notifications_trigger_minute,
+    Optional[String] $sender_email = $::gb_backend::params::sender_email,
 ) inherits gb_backend::params {
 
     user { $user:
