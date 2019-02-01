@@ -61,6 +61,8 @@ Keycloak parameters. They should match with that ones that frontend glowing bear
 
 ### Application parameters
 
+Please note that `transmart.api-version` hardcoded to `v2`.
+
 | hiera key | default value | description |
 |-----------|---------------|-------------|
 | `gb_backend::transmart_server_url` || transmart url that used. e.g. `https://transmart.example.com` |
