@@ -9,7 +9,7 @@ class gb_backend::params (
     String $db_user = lookup('gb_backend::db_user', String, first, 'gb'),
     String $db_password = lookup('gb_backend::db_password', String, first, 'gb'),
     String $db_host = lookup('gb_backend::db_host', String, first, 'localhost'),
-    String $db_port = lookup('gb_backend::db_port', String, first, '5432'),
+    Integer $db_port = lookup('gb_backend::db_port', Integer, first, 5432),
     String $db_name = lookup('gb_backend::db_name', String, first, 'gb_backend'),
 
     String $nexus_url = lookup('gb_backend::nexus_url', String, first, 'https://repo.thehyve.nl'),
