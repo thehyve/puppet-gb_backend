@@ -17,7 +17,7 @@ dataSource:
     url: jdbc:postgresql://<%= scope.lookupvar('::gb_backend::params::db_host') %>:<%= scope.lookupvar('::gb_backend::params::db_port') %>/<%= scope.lookupvar('::gb_backend::params::db_name') %>
 
 <% if scope.lookupvar('::gb_backend::params::notifications_enabled') -%>
-org.transmartproject.notifications:
+nl.thehyve.gb.backend.notifications:
     # enable daily and weekly notification jobs
     enabled: true
     # max number of query sets returned in a subscription email
