@@ -9,7 +9,7 @@ class gb_backend(
     String $db_user = $::gb_backend::params::db_user,
     String $db_password = $::gb_backend::params::db_password,
     String $db_host = $::gb_backend::params::db_host,
-    String $db_port = $::gb_backend::params::db_port,
+    Integer $db_port = $::gb_backend::params::db_port,
     String $db_name = $::gb_backend::params::db_name,
 
     String $nexus_url = $::gb_backend::params::nexus_url,
