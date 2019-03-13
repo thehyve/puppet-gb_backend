@@ -64,7 +64,7 @@ class gb_backend(
     archive::nexus { $application_war_file:
         user       =>  $user,
         url        =>  $nexus_url,
-        gav        =>  "nl.thehyve.gb.backend:gb-backend:${version}",
+        gav        =>  "nl.thehyve:gb-backend:${version}",
         repository =>  $repository,
         packaging  =>  'war',
         mode       =>  '0444',
