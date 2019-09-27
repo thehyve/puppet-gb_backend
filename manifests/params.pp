@@ -26,6 +26,7 @@ class gb_backend::params (
     Integer[0,23] $notifications_trigger_hour = lookup('gb_backend::notifications_trigger_hour', Integer[0,23], first, 0),
     Integer[0,59] $notifications_trigger_minute = lookup('gb_backend::notifications_trigger_minute', Integer[0,59], first, 0),
     String $notifications_client_app_name = lookup('gb_backend::notifications_client_app_name', String, first, 'Glowing Bear'),
+    Optional[String] $notifications_client_app_url = lookup('gb_backend::notifications_client_app_url', Optional[String], first, undef),
     Optional[String] $sender_email = lookup('gb_backend::sender_email', Optional[String], first, undef),
 ) {
     if $transmart_server_url == '' {

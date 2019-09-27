@@ -37,6 +37,8 @@ describe 'gb_backend' do
             .with_content(/\s*maxNumberOfSets:\s*35\s*/)
             .with_content(/\s*dailyJobTriggerTime:\s*18\-25\s*/)
             .with_content(/\s*from:\s*email@example.com\s*/)
+            .with_content(/\s*clientApplicationName:\s*Glowing Bear\s*/)
+            .with_content(/\s*clientApplicationUrl:\s*https:\/\/glowingbear.example.com\s*/)
       }
     end
 

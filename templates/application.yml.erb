@@ -28,6 +28,9 @@ nl.thehyve.gb.backend.notifications:
     dailyJobTriggerTime: <%= scope.lookupvar('::gb_backend::params::notifications_trigger_hour').to_s %>-<%= scope.lookupvar('::gb_backend::params::notifications_trigger_minute').to_s %>
     # Name of the client application on behalf of which gb-backend will send notification email.
     clientApplicationName: <%= scope.lookupvar('::gb_backend::params::notifications_client_app_name').to_s %>
+<% if scope.lookupvar('::gb_backend::params::notifications_client_app_url') != nil -%>
+    clientApplicationUrl: <%= scope.lookupvar('::gb_backend::params::notifications_client_app_url').to_s %>
+<% end -%>
 <% end -%>
 
 <% if scope.lookupvar('::gb_backend::params::sender_email') != nil -%>

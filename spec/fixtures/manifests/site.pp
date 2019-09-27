@@ -21,3 +21,7 @@ node 'noofflinetoken.example.com' {
 node 'notransmart.example.com' {
     include ::gb_backend
 }
+
+node 'notifications.example.com' {
+    include ::gb_backend
+}

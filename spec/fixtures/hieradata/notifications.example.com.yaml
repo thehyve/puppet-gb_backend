@@ -10,4 +10,5 @@ gb_backend::notifications_sets: 35
 gb_backend::notifications_trigger_hour: 18
 gb_backend::notifications_trigger_minute: 25
 gb_backend::notifications_client_app_name: Glowing Bear
+gb_backend::notifications_client_app_url: https://glowingbear.example.com
 gb_backend::sender_email: email@example.com

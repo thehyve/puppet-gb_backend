@@ -114,6 +114,7 @@ Database parameters used to create database if it does not exist and used by the
 | `gb_backend::notifications_trigger_hour` | `0` | Hour for daily notification trigger. |
 | `gb_backend::notifications_trigger_minute` | `0` | Minute for daily notification trigger. |
 | `gb_backend::notifications_client_app_name` | `Glowing Bear` | Name of the client application on behalf of which gb-backend will send notification email |
+| `gb_backend::notifications_client_app_url` | | URL of the client application |
 | `gb_backend::sender_email` || Email address used in "from" field in the emails sent by the glowing bear. |
 
 ## Manage `systemd` services 
