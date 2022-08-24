@@ -9,5 +9,5 @@ java \
     -Dmail.mime.decodeparameters=true \
     -Djava.security.egd=file:///dev/urandom \
     -Dserver.port=<%= @app_port %> \
-    -Dspring.config.location=<%= @app_conf %> \
+    -Dspring.config.additional-location=<%= @app_conf %> \
     <%= @application_war_file %>

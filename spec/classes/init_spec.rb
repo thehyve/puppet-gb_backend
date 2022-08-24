@@ -9,7 +9,7 @@ describe 'gb_backend' do
 
         is_expected.to contain_file('/home/gb/start.sh')
             .with_content(/\s*-Dserver.port=8083\s*/)
-            .with_content(/\s*-Dspring.config.location=\/home\/gb\/application\.yml\s*/)
+            .with_content(/\s*-Dspring.config.additional-location=\/home\/gb\/application\.yml\s*/)
             .with_content(/\s*\/home\/gb\/gb-backend\-0\.1\-SNAPSHOT\.war\s*/)
 
         is_expected.to contain_file('/home/gb/application.yml')
